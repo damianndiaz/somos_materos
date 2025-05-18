@@ -16,7 +16,6 @@
         --color-4: #402f1a;  /* Marrón oscuro - texto */
         --color-5: #a0aea9;  /* Verde grisáceo - detalles */
     }
-    
     body {
         font-family: 'Roboto', sans-serif;
         margin: 0;
@@ -25,24 +24,12 @@
         color: var(--color-4);
         line-height: 1.6;
     }
-    
     .header {
         background-color: var(--color-1);
         text-align: center;
         border-bottom: 3px solid var(--color-3);
         padding: 32px 0 16px 0;
     }
-    
-    .logo-container {
-        display: inline-block;
-        text-align: center;
-    }
-    
-    .logo-img {
-        height: 120px;
-        margin-bottom: 18px;
-    }
-    
     .logo-text {
         font-family: 'Smokum', cursive;
         font-size: 3.2rem;
@@ -51,22 +38,6 @@
         margin: 0 0 8px 0;
         line-height: 1;
     }
-    
-    .logo-subtext {
-        font-size: 1.2rem;
-        color: var(--color-5);
-        margin-top: 5px;
-        letter-spacing: 3px;
-    }
-
-    .header-slogan-main {
-        font-family: 'Smokum', cursive;
-        font-size: 3.2rem;
-        color: var(--color-2);
-        margin: 20px 0 0 0;
-        letter-spacing: 1px;
-    }
-    
     .header-slogan-sub {
         font-size: 1.3rem;
         color: var(--color-5);
@@ -74,19 +45,16 @@
         font-weight: 400;
         letter-spacing: 2px;
     }
-    
     .products-container {
         max-width: 1200px;
         margin: 40px auto;
         padding: 0 20px;
     }
-
     .products-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 28px;
     }
-
     .product-card {
         background: white;
         border-radius: 10px;
@@ -99,13 +67,53 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
+        position: relative;
     }
-
     .product-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 20px rgba(12, 20, 24, 0.15);
     }
-
+    .product-checkbox-label {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 3;
+        pointer-events: none;
+    }
+    .product-checkbox,
+    .custom-checkbox {
+        pointer-events: auto;
+    }
+    .product-checkbox {
+        display: none;
+    }
+    .custom-checkbox {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--color-3);
+        border-radius: 4px;
+        background: white;
+        display: inline-block;
+        margin-right: 6px;
+        cursor: pointer;
+        transition: border-color 0.2s;
+        position: relative;
+    }
+    .product-checkbox:checked + .custom-checkbox {
+        border-color: var(--color-1);
+        background: var(--color-3);
+    }
+    .product-checkbox:checked + .custom-checkbox::after {
+        content: '';
+        position: absolute;
+        left: 5px; top: 2px;
+        width: 6px; height: 12px;
+        border: solid white;
+        border-width: 0 2.5px 2.5px 0;
+        transform: rotate(45deg);
+    }
     .product-image {
         width: 100%;
         height: 160px;
@@ -114,8 +122,14 @@
         background: #faf9f7;
         display: block;
         margin: 0 auto;
+        cursor: zoom-in;
+        transition: transform 0.35s cubic-bezier(.18,.89,.32,1.28), box-shadow 0.18s;
     }
-
+    .product-image:hover {
+        transform: scale(1.19);
+        z-index: 2;
+        box-shadow: 0 8px 24px rgba(12, 20, 24, 0.12);
+    }
     .product-info {
         padding: 18px;
         flex: 1 1 auto;
@@ -123,7 +137,6 @@
         flex-direction: column;
         justify-content: space-between;
     }
-
     .product-title {
         font-size: 1.2rem;
         font-weight: 500;
@@ -132,21 +145,18 @@
         border-bottom: 1px dashed var(--color-3);
         padding-bottom: 6px;
     }
-
     .product-description {
         color: var(--color-4);
         font-size: 0.93rem;
         margin-bottom: 12px;
         min-height: 40px;
     }
-
     .product-price {
         font-size: 1.3rem;
         font-weight: 500;
         color: var(--color-1);
         margin: 12px 0 8px 0;
     }
-
     .buy-button {
         display: block;
         background-color: var(--color-3);
@@ -165,11 +175,9 @@
         margin: 10px auto 0 auto;
         box-sizing: border-box;
     }
-
     .buy-button:hover {
         background-color: var(--color-1);
     }
-
     .footer {
         background-color: var(--color-1);
         color: var(--color-2);
@@ -177,16 +185,14 @@
         padding: 30px 20px;
         margin-top: 60px;
     }
-
     .social-links {
         display: flex;
         justify-content: center;
-        gap: 14px;          /* más compacto */
+        gap: 14px;
         margin: 16px 0;
     }
-
     .social-icon {
-        width: 34px;        /* MÁS CHICO */
+        width: 34px;
         height: 34px;
         border-radius: 50%;
         background-color: var(--color-3);
@@ -196,26 +202,44 @@
         transition: all 0.3s;
         flex-shrink: 0;
     }
-
     .social-icon:hover {
         background-color: var(--color-5);
         transform: scale(1.1);
     }
-
     .social-icon img {
-        width: 17px;        /* MÁS CHICO */
+        width: 17px;
         height: 17px;
         object-fit: contain;
         display: block;
     }
-
     .copyright {
         font-size: 0.9rem;
         color: var(--color-5);
         margin-top: 20px;
     }
-
-    /* Responsive para tablets */
+    .whatsapp-cart-btn {
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%);
+        background: #25d366;
+        color: white;
+        font-size: 1.18rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 28px;
+        padding: 14px 38px;
+        box-shadow: 0 4px 16px rgba(50, 120, 80, 0.08);
+        z-index: 3000;
+        cursor: pointer;
+        transition: background 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .whatsapp-cart-btn:hover {
+        background: #21bc5a;
+    }
     @media (max-width: 1100px) {
         .products-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -224,105 +248,89 @@
             max-width: 100%;
         }
     }
-@media (max-width: 700px) {
-    .products-grid {
-        grid-template-columns: 1fr;
+    @media (max-width: 700px) {
+        .products-grid {
+            grid-template-columns: 1fr;
+        }
+        .product-card {
+            max-width: 100%;
+        }
+        .social-icon {
+            width: 27px;
+            height: 27px;
+        }
+        .social-icon img {
+            width: 13px;
+            height: 13px;
+        }
+        .whatsapp-cart-btn {
+            width: 95vw;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 12px;
+            font-size: 1.01rem;
+            padding: 12px 8px;
+        }
     }
-    .product-card {
-        max-width: 100%;
-    }
-    .social-icon {
-        width: 27px;
-        height: 27px;
-    }
-    .social-icon img {
-        width: 13px;
-        height: 13px;
+    /* Modal imagen ampliada */
+    .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.88);
+        align-items: center;
+        justify-content: center;
     }
     .image-modal-content {
-        max-width: 95vw;
-        max-height: 65vh;
+        margin: auto;
+        display: block;
+        max-width: 80vw;
+        max-height: 80vh;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+        border-radius: 12px;
+        background: #fff;
     }
     .image-modal-close {
-        top: 14px; 
-        right: 16px;
-        font-size: 32px;
+        position: absolute;
+        top: 32px; right: 60px;
+        color: #faf9f7;
+        font-size: 46px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+        z-index: 2002;
     }
-}
-/* Efecto zoom suave al pasar el mouse */
-.product-image {
-    cursor: zoom-in;
-    transition: transform 0.35s cubic-bezier(.18,.89,.32,1.28), box-shadow 0.18s;
-}
-.product-image:hover {
-    transform: scale(1.19);
-    z-index: 2;
-    box-shadow: 0 8px 24px rgba(12, 20, 24, 0.12);
-}
-
-/* Modal de imagen ampliada */
-.image-modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1001; 
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.88); 
-    align-items: center;
-    justify-content: center;
-}
-
-.image-modal-content {
-    margin: auto;
-    display: block;
-    max-width: 80vw;
-    max-height: 80vh;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.7);
-    border-radius: 12px;
-    background: #fff;
-}
-
-.image-modal-close {
-    position: absolute;
-    top: 32px; right: 60px;
-    color: #faf9f7;
-    font-size: 46px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-    z-index: 2002;
-}
-.image-modal-close:hover {
-    color: #fff;
-}
-
-@media (max-width: 700px) {
-    .image-modal-content {
-        max-width: 95vw;
-        max-height: 65vh;
+    .image-modal-close:hover {
+        color: #fff;
     }
-    .image-modal-close {
-        top: 14px; right: 16px;
-        font-size: 32px;
+    @media (max-width: 700px) {
+        .image-modal-content {
+            max-width: 95vw;
+            max-height: 65vh;
+        }
+        .image-modal-close {
+            top: 14px; right: 16px;
+            font-size: 32px;
+        }
     }
-}
 </style>
-
 </head>
 <body>
-
     <header class="header">
         <h1 class="logo-text"> Somos Materos</h1>
         <div class="header-slogan-sub">El mejor mate para los verdaderos materos</div>
     </header>
-    
-    <!-- SACAMOS LA SECCIÓN DE SLOGAN AQUÍ -->
-    
     <div class="products-container">
         <div class="products-grid">
             <!-- Producto 1 -->
             <div class="product-card">
+                <label class="product-checkbox-label">
+                    <input type="checkbox" class="product-checkbox" data-title="Mate Imperial Calabaza Cincelado" data-price="40000">
+                    <span class="custom-checkbox"></span>
+                </label>
                 <img src="images/mate1.png" alt="Mate Imperial Calabaza Cincelado" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Mate Imperial Calabaza Cincelado</h3>
@@ -333,6 +341,10 @@
             </div>
             <!-- Producto 2 -->
             <div class="product-card">
+                <label class="product-checkbox-label">
+                    <input type="checkbox" class="product-checkbox" data-title="Mate Imperial Calabaza Liso" data-price="35000">
+                    <span class="custom-checkbox"></span>
+                </label>
                 <img src="images/mate2.png" alt="Mate Imperial Calabaza Liso" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Mate Imperial Calabaza Liso</h3>
@@ -343,6 +355,10 @@
             </div>
             <!-- Producto 3 -->
             <div class="product-card">
+                <label class="product-checkbox-label">
+                    <input type="checkbox" class="product-checkbox" data-title="Mate Camionero Calabaza Cincelado" data-price="33500">
+                    <span class="custom-checkbox"></span>
+                </label>
                 <img src="images/mate3.png" alt="Mate Camionero Calabaza Cincelado" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Mate Camionero Calabaza Cincelado</h3>
@@ -353,6 +369,10 @@
             </div>
             <!-- Producto 4 -->
             <div class="product-card">
+                <label class="product-checkbox-label">
+                    <input type="checkbox" class="product-checkbox" data-title="Mate Algarrobo Jilguero Liso" data-price="25200">
+                    <span class="custom-checkbox"></span>
+                </label>
                 <img src="images/mate4.png" alt="Mate Algarrobo Jilguero Liso" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Mate Algarrobo Jilguero Liso</h3>
@@ -363,6 +383,10 @@
             </div>
             <!-- Producto 5 -->
             <div class="product-card">
+                <label class="product-checkbox-label">
+                    <input type="checkbox" class="product-checkbox" data-title="Bombillón Alpaca Uruguayo Pico de Loro Cincelado" data-price="30000">
+                    <span class="custom-checkbox"></span>
+                </label>
                 <img src="images/bombillon1.png" alt="Bombillón Alpaca Uruguayo – Pico De Loro Cincelado" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Bombillón Alpaca Uruguayo</h3>
@@ -373,16 +397,24 @@
             </div>
             <!-- Producto 6 -->
             <div class="product-card">
+                <label class="product-checkbox-label">
+                    <input type="checkbox" class="product-checkbox" data-title="Bombilla Alpaca Pico Loro Clásica" data-price="20000">
+                    <span class="custom-checkbox"></span>
+                </label>
                 <img src="images/bombilla2.png" alt="Bombilla Alpaca Pico Loro Clásica" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Bombilla Alpaca Pico Loro</h3>
                     <p class="product-description">Modelo clásico. Elegancia y durabilidad para tu mate.</p>
                     <div class="product-price">$20.000</div>
                     <a href="https://wa.me/5491170642659?text=Hola%20Materos,%20quiero%20comprar%20la%20Bombilla%20Alpaca%20Pico%20Loro%20Clásica.%20Valor:%20$20.000" class="buy-button">COMPRAR</a>
-                    </div>
+                </div>
             </div>
             <!-- Producto 7 -->
             <div class="product-card">
+                <label class="product-checkbox-label">
+                    <input type="checkbox" class="product-checkbox" data-title="Mate Algarrobo Ranchero + Bombilla Taumer Acero Pico Loro" data-price="50000">
+                    <span class="custom-checkbox"></span>
+                </label>
                 <img src="images/matealgarrobo.png" alt="Mate Algarrobo Ranchero + Bombilla Acero Pico Loro" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Mate Algarrobo Ranchero + Bombilla</h3>
@@ -393,6 +425,10 @@
             </div>
             <!-- Producto 8 -->
             <div class="product-card">
+                <label class="product-checkbox-label">
+                    <input type="checkbox" class="product-checkbox" data-title="Bombilla Taumer Acero Pico Loro" data-price="15000">
+                    <span class="custom-checkbox"></span>
+                </label>
                 <img src="images/bombillataumer.png" alt="Bombilla Taumer Acero Pico Loro" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Bombilla Taumer Acero</h3>
@@ -401,44 +437,72 @@
                     <a href="https://wa.me/5491170642659?text=Hola%20Materos,%20quiero%20comprar%20la%20Bombilla%20Taumer%20Acero%20Pico%20Loro.%20Valor:%20$15.000" class="buy-button">COMPRAR</a>
                 </div>
             </div>
-                    </div>
-                </div>
-                
-                <footer class="footer">
-                    <div class="social-links">
-                        <a href="https://wa.me/5491170642659" class="social-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp">
-                        </a>
-                        <a href="https://instagram.com/somosmateros" class="social-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-                        </a>
+        </div>
+        <button id="whatsapp-cart-btn" class="whatsapp-cart-btn">
+            <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp" style="width:22px;height:22px;vertical-align:middle;margin-right:6px;">
+            Enviar mi pedido por WhatsApp
+        </button>
+    </div>
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://wa.me/5491170642659" class="social-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp">
+            </a>
+            <a href="https://instagram.com/somosmateros" class="social-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+            </a>
         </div>
         <p class="copyright">© 2025 Somos Materos</p>
     </footer>
-
-<!-- Modal para imagen ampliada -->
-<div id="imageModal" class="image-modal">
-    <span class="image-modal-close" id="closeModal">&times;</span>
-    <img class="image-modal-content" id="modalImg">
-</div>
-</body>
+    <!-- Modal para imagen ampliada -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-modal-close" id="closeModal">&times;</span>
+        <img class="image-modal-content" id="modalImg">
+    </div>
 <script>
-// Efecto modal al hacer clic en imagen
+// Evitar que el checkbox dispare el modal o el zoom
+document.querySelectorAll('.product-checkbox, .custom-checkbox, .product-checkbox-label').forEach(function(el) {
+    el.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+});
+
+// Modal imagen producto
 document.querySelectorAll('.product-image').forEach(function(img) {
     img.addEventListener('click', function() {
         document.getElementById('modalImg').src = this.src;
         document.getElementById('imageModal').style.display = "flex";
     });
 });
-
-// Cerrar modal al tocar la X
 document.getElementById('closeModal').onclick = function() {
     document.getElementById('imageModal').style.display = "none";
 }
-
-// Cerrar modal al tocar fuera de la imagen
 document.getElementById('imageModal').onclick = function(e) {
     if (e.target === this) this.style.display = "none";
 }
+
+// WhatsApp carrito múltiple
+document.getElementById('whatsapp-cart-btn').addEventListener('click', function() {
+    let checkboxes = document.querySelectorAll('.product-checkbox');
+    let products = [];
+    let total = 0;
+    checkboxes.forEach(function(cb) {
+        if(cb.checked) {
+            let title = cb.getAttribute('data-title');
+            let price = cb.getAttribute('data-price');
+            products.push(`- ${title} ($${Number(price).toLocaleString('es-AR')})`);
+            total += Number(price);
+        }
+    });
+
+    if(products.length === 0) {
+        alert("Seleccioná al menos un producto para tu pedido.");
+        return;
+    }
+    let msg = `Hola Materos! Quisiera pedir los siguientes productos:\n\n${products.join('\n')}\n\nTotal estimado: $${total.toLocaleString('es-AR')}\n¿Me pasás el total final y cómo seguimos?`;
+    let url = "https://wa.me/5491170642659?text=" + encodeURIComponent(msg);
+    window.open(url, "_blank");
+});
 </script>
+</body>
 </html>
