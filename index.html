@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>Somos Materos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Smokum&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --color-1: #0c1418;  /* Negro azulado - principal */
+        --color-2: #e7e2d0;  /* Beige claro - fondo */
+        --color-3: #8e7f6c;  /* Marrón medio - acentos */
+        --color-4: #402f1a;  /* Marrón oscuro - texto */
+        --color-5: #a0aea9;  /* Verde grisáceo - detalles */
+    }
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--color-2);
+        color: var(--color-4);
+        line-height: 1.6;
+    }
+    
+    .header {
+        background-color: var(--color-1);
+        text-align: center;
+        border-bottom: 3px solid var(--color-3);
+        padding: 32px 0 16px 0;
+    }
+    
+    .logo-container {
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .logo-img {
+        height: 120px;
+        margin-bottom: 18px;
+    }
+    
+    .logo-text {
+        font-family: 'Smokum', cursive;
+        font-size: 3.2rem;
+        color: var(--color-2);
+        letter-spacing: 2px;
+        margin: 0 0 8px 0;
+        line-height: 1;
+    }
+    
+    .logo-subtext {
+        font-size: 1.2rem;
+        color: var(--color-5);
+        margin-top: 5px;
+        letter-spacing: 3px;
+    }
+
+    .header-slogan-main {
+        font-family: 'Smokum', cursive;
+        font-size: 3.2rem;
+        color: var(--color-2);
+        margin: 20px 0 0 0;
+        letter-spacing: 1px;
+    }
+    
+    .header-slogan-sub {
+        font-size: 1.3rem;
+        color: var(--color-5);
+        margin: 0;
+        font-weight: 400;
+        letter-spacing: 2px;
+    }
+    
+    .products-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(12, 20, 24, 0.08);
+        transition: all 0.3s ease;
+        border: 1px solid var(--color-5);
+        width: 100%;
+        max-width: 270px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(12, 20, 24, 0.15);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 160px;
+        object-fit: contain;
+        border-bottom: 1px solid var(--color-5);
+        background: #faf9f7;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .product-info {
+        padding: 18px;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .product-title {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--color-1);
+        margin: 0 0 10px 0;
+        border-bottom: 1px dashed var(--color-3);
+        padding-bottom: 6px;
+    }
+
+    .product-description {
+        color: var(--color-4);
+        font-size: 0.93rem;
+        margin-bottom: 12px;
+        min-height: 40px;
+    }
+
+    .product-price {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: var(--color-1);
+        margin: 12px 0 8px 0;
+    }
+
+    .buy-button {
+        display: block;
+        background-color: var(--color-3);
+        color: white;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        width: 95%;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        margin: 10px auto 0 auto;
+        box-sizing: border-box;
+    }
+
+    .buy-button:hover {
+        background-color: var(--color-1);
+    }
+
+    .footer {
+        background-color: var(--color-1);
+        color: var(--color-2);
+        text-align: center;
+        padding: 30px 20px;
+        margin-top: 60px;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 14px;          /* más compacto */
+        margin: 16px 0;
+    }
+
+    .social-icon {
+        width: 34px;        /* MÁS CHICO */
+        height: 34px;
+        border-radius: 50%;
+        background-color: var(--color-3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        flex-shrink: 0;
+    }
+
+    .social-icon:hover {
+        background-color: var(--color-5);
+        transform: scale(1.1);
+    }
+
+    .social-icon img {
+        width: 17px;        /* MÁS CHICO */
+        height: 17px;
+        object-fit: contain;
+        display: block;
+    }
+
+    .copyright {
+        font-size: 0.9rem;
+        color: var(--color-5);
+        margin-top: 20px;
+    }
+
+    /* Responsive para tablets */
+    @media (max-width: 1100px) {
+        .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .product-card {
+            max-width: 100%;
+        }
+    }
+@media (max-width: 700px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    .product-card {
+        max-width: 100%;
+    }
+    .social-icon {
+        width: 27px;
+        height: 27px;
+    }
+    .social-icon img {
+        width: 13px;
+        height: 13px;
+    }
+    .image-modal-content {
+        max-width: 95vw;
+        max-height: 65vh;
+    }
+    .image-modal-close {
+        top: 14px; 
+        right: 16px;
+        font-size: 32px;
+    }
+}
+/* Efecto zoom suave al pasar el mouse */
+.product-image {
+    cursor: zoom-in;
+    transition: transform 0.35s cubic-bezier(.18,.89,.32,1.28), box-shadow 0.18s;
+}
+.product-image:hover {
+    transform: scale(1.19);
+    z-index: 2;
+    box-shadow: 0 8px 24px rgba(12, 20, 24, 0.12);
+}
+
+/* Modal de imagen ampliada */
+.image-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1001; 
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.88); 
+    align-items: center;
+    justify-content: center;
+}
+
+.image-modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80vw;
+    max-height: 80vh;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+    border-radius: 12px;
+    background: #fff;
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 32px; right: 60px;
+    color: #faf9f7;
+    font-size: 46px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 2002;
+}
+.image-modal-close:hover {
+    color: #fff;
+}
+
+@media (max-width: 700px) {
+    .image-modal-content {
+        max-width: 95vw;
+        max-height: 65vh;
+    }
+    .image-modal-close {
+        top: 14px; right: 16px;
+        font-size: 32px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="logo-text"> Somos Materos</h1>
+        <div class="header-slogan-sub">El mejor mate para los verdaderos materos</div>
+    </header>
+    
+    <!-- SACAMOS LA SECCIÓN DE SLOGAN AQUÍ -->
+    
+    <div class="products-container">
+        <div class="products-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <img src="images/mate1.png" alt="Mate Imperial Calabaza Cincelado" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Mate Imperial Calabaza Cincelado</h3>
+                    <p class="product-description">Mate de calabaza curado artesanalmente, con virola de alpaca cincelada y base reforzada.</p>
+                    <div class="product-price">$40.000</div>
+                    <a href="https://wa.me/5491170642659?text=Hola%20Materos,%20quiero%20comprar%20el%20Mate%20Imperial%20Cincelado.%20Valor:%20$40.000" class="buy-button">COMPRAR</a>
+                </div>
+            </div>
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <img src="images/mate2.png" alt="Mate Imperial Calabaza Liso" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Mate Imperial Calabaza Liso</h3>
+                    <p class="product-description">Mate interior de calabaza forrado en cuero vaqueta. Virola premium de alpaca lisa.</p>
+                    <div class="product-price">$35.000</div>
+                    <a href="https://wa.me/5491170642659?text=Hola%20Materos,%20quiero%20comprar%20el%20Mate%20Imperial%20Liso.%20Valor:%20$35.000" class="buy-button">COMPRAR</a>
+                </div>
+            </div>
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <img src="images/mate3.png" alt="Mate Camionero Calabaza Cincelado" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Mate Camionero Calabaza Cincelado</h3>
+                    <p class="product-description">Mate de calabaza forrado en cuero vaqueta con virola cincelada de alpaca. </p>
+                    <div class="product-price">$33.500</div>
+                    <a href="https://wa.me/5491170642659?text=Hola%20Materos,%20quiero%20comprar%20el%20Mate%20Camionero%20Cincelado.%20Valor:%20$33.500" class="buy-button">COMPRAR</a>
+                </div>
+            </div>
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <img src="images/mate4.png" alt="Mate Algarrobo Jilguero Liso" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Mate Algarrobo Jilguero Liso</h3>
+                    <p class="product-description">Mate de madera algarrobo con virola de Alpaca.</p>
+                    <div class="product-price">$25.200</div>
+                    <a href="https://wa.me/5491170642659?text=Hola%20Materos,%20quiero%20comprar%20el%20Mate%20Algarrobo%20Liso.%20Valor:%20$25.200" class="buy-button">COMPRAR</a>
+                </div>
+            </div>
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <img src="images/bombillon1.png" alt="Bombillón Alpaca Uruguayo – Pico De Loro Cincelado" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Bombillón Alpaca Uruguayo</h3>
+                    <p class="product-description">Pico de loro cincelado. Máxima calidad y tradición uruguaya.</p>
+                    <div class="product-price">$30.000</div>
+                    <a href="https://wa.me/5491170642659?text=Hola%20Materos,%20quiero%20comprar%20el%20Bombillón%20Alpaca%20Uruguayo%20Pico%20de%20Loro%20Cincelado.%20Valor:%20$30.000" class="buy-button">COMPRAR</a>
+                </div>
+            </div>
+            <!-- Producto 6 -->
+            <div class="product-card">
+                <img src="images/bombilla2.png" alt="Bombilla Alpaca Pico Loro Clásica" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Bombilla Alpaca Pico Loro</h3>
+                    <p class="product-description">Modelo clásico. Elegancia y durabilidad para tu mate.</p>
+                    <div class="product-price">$20.000</div>
+                    <a href="https://wa.me/5491170642659?text=Hola%20Materos,%20quiero%20comprar%20la%20Bombilla%20Alpaca%20Pico%20Loro%20Clásica.%20Valor:%20$20.000" class="buy-button">COMPRAR</a>
+                    </div>
+            </div>
+            <!-- Producto 7 -->
+            <div class="product-card">
+                <img src="images/matealgarrobo.png" alt="Mate Algarrobo Ranchero + Bombilla Acero Pico Loro" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Mate Algarrobo Ranchero + Bombilla</h3>
+                    <p class="product-description">Incluye mate de algarrobo y bombilla Taumer acero pico loro. Premium set.</p>
+                    <div class="product-price">$50.000</div>
+                    <a href="https://wa.me/5491170642659?text=Hola%20Materos,%20quiero%20comprar%20el%20Mate%20Algarrobo%20Ranchero%20con%20Bombilla%20Taumer%20Acero.%20Valor:%20$50.000" class="buy-button">COMPRAR</a>
+                </div>
+            </div>
+            <!-- Producto 8 -->
+            <div class="product-card">
+                <img src="images/bombillataumer.png" alt="Bombilla Taumer Acero Pico Loro" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Bombilla Taumer Acero</h3>
+                    <p class="product-description">Pico loro. Hecha en acero de alta calidad. Ideal para todos los mates.</p>
+                    <div class="product-price">$15.000</div>
+                    <a href="https://wa.me/5491170642659?text=Hola%20Materos,%20quiero%20comprar%20la%20Bombilla%20Taumer%20Acero%20Pico%20Loro.%20Valor:%20$15.000" class="buy-button">COMPRAR</a>
+                </div>
+            </div>
+                    </div>
+                </div>
+                
+                <footer class="footer">
+                    <div class="social-links">
+                        <a href="https://wa.me/5491170642659" class="social-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp">
+                        </a>
+                        <a href="https://instagram.com/somosmateros" class="social-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+                        </a>
+        </div>
+        <p class="copyright">© 2025 Somos Materos</p>
+    </footer>
+
+<!-- Modal para imagen ampliada -->
+<div id="imageModal" class="image-modal">
+    <span class="image-modal-close" id="closeModal">&times;</span>
+    <img class="image-modal-content" id="modalImg">
+</div>
+</body>
+<script>
+// Efecto modal al hacer clic en imagen
+document.querySelectorAll('.product-image').forEach(function(img) {
+    img.addEventListener('click', function() {
+        document.getElementById('modalImg').src = this.src;
+        document.getElementById('imageModal').style.display = "flex";
+    });
+});
+
+// Cerrar modal al tocar la X
+document.getElementById('closeModal').onclick = function() {
+    document.getElementById('imageModal').style.display = "none";
+}
+
+// Cerrar modal al tocar fuera de la imagen
+document.getElementById('imageModal').onclick = function(e) {
+    if (e.target === this) this.style.display = "none";
+}
+</script>
+</html>
